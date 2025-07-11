@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Inspiration Series</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .poster {
+            width: 800px;
+            height: 600px;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .poster::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .person-container {
+            position: relative;
+            margin-bottom: 30px;
+            z-index: 2;
+        }
+
+        .person {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(145deg, #2d3748, #4a5568);
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .person::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 40px;
+            background: linear-gradient(145deg, #e2e8f0, #cbd5e0);
+            border-radius: 50% 50% 60% 40%;
+            box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .headphones {
+            position: absolute;
+            top: 5px;
+            left: 15px;
+            right: 15px;
+            height: 15px;
+            background: linear-gradient(145deg, #2d3748, #4a5568);
+            border-radius: 15px;
+            z-index: 3;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .headphones::before,
+        .headphones::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(145deg, #ff6b6b, #ee5a52);
+            border-radius: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            border: 3px solid #2d3748;
+        }
+
+        .headphones::before {
+            left: -20px;
+        }
+
+        .headphones::after {
+            right: -20px;
+        }
+
+        .musical-notes {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 24px;
+            color: #ff6b6b;
+            opacity: 0.7;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .title {
+            font-size: 42px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 15px;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            z-index: 2;
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #cbd5e0;
+            margin-bottom: 25px;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 600px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .series-tag {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+            z-index: 2;
+            position: relative;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+        }
+
+        .series-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+            background: linear-gradient(45deg, #ff5252, #26d0ce);
+        }
+
+        .series-tag:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            opacity: 0.1;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .wave::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v-2c-10.271 0-15.362-1.222-24.629-4.928C65.888 3.278 60.562 2 50 2 39.374 2 33.145 3.397 23.34 7.063l-1.767.662C13.223 10.84 8.163 12 0 12v2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E") repeat-x;
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .linkedin-accent {
+            color: #0077b5;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="musical-notes">♪ ♫ ♪</div>
+        
+        <div class="person-container">
+            <div class="person pulse">
+                <div class="headphones"></div>
+            </div>
+        </div>
+        
+        <h1 class="title">Music & Motivation</h1>
+        
+        <p class="subtitle">
+            Join me on a journey where every song tells a story,<br>
+            and every lyric sparks inspiration for your <span class="linkedin-accent">professional growth</span>
+        </p>
+        
+        <button class="series-tag" onclick="handleSeriesClick()">New Series Starting Soon</button>
+        
+        <div class="wave"></div>
+    </div>
+
+    <script>
+        function handleSeriesClick() {
+            // Redirect to LinkedIn profile
+            window.open('https://www.linkedin.com/in/vansh-gera-0a97a5302', '_blank');
+        }
+    </script>
+</body>
+</html>
+
